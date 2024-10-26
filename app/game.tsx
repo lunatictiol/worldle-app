@@ -1,6 +1,8 @@
 import { StyleSheet, Text, useColorScheme, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Colors } from '@/constants/Colors'
+import { allWords } from '@/utils/allWords';
+import { words } from '@/utils/targetWords';
 import { Stack, useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons';
 import OnScreenKeyboard from '@/components/OnScreenKeyBoard'
@@ -15,10 +17,22 @@ const game = () => {
 
   const [rows, setRows] = useState<string[][]>(new Array(ROWS).fill(new Array(5).fill('a'))) 
   const [curRow, setCurRow] = useState(0)
-  const [curCol, setCurCol] = useState(0)
+  const [curCol, _setCurCol] = useState(0)
+  
   const[greenLetters, setGreenLetters] = useState<string[]>([])
   const[grayLetters, setGrayLetters] = useState<string[]>([])
   const[yellowLetters, setYellowLetters] = useState<string[]>([])
+  
+  //const [word, setWord] = useState(words[Math.floor(Math.random() * words.length)]);
+  const[word,setWord] = useState('sabiq') 
+  const wordLetters = word.split('');
+  
+  const colStateRef = useRef(curCol)
+  const setCurCol = (col:number)=>{
+    colStateRef.current = col
+    _setCurCol(col)
+  }
+  
   const addKey = (key:String)=>{
     console.log("add key",key);
     
