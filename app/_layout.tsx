@@ -11,22 +11,31 @@ import {
 } from '@expo-google-fonts/frank-ruhl-libre';
 import Logo from '@/assets/images/nyt-logo.svg';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Modal, TouchableOpacity, useColorScheme } from "react-native";
+import { Appearance, Modal, Platform, TouchableOpacity, useColorScheme } from "react-native";
 import {GestureHandlerRootView } from 'react-native-gesture-handler'
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet'
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { TransitionPresets } from '@react-navigation/stack';
 import { JsStack } from "@/components/JsStack";
+import { useMMKVBoolean } from "react-native-mmkv";
+import { storage } from "@/utils/Storage";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const router = useRouter();
+  const [dark] = useMMKVBoolean("dark-mode",storage)
   let [fontsLoaded] = useFonts({
     FrankRuhlLibre_800ExtraBold,
     FrankRuhlLibre_500Medium,
     FrankRuhlLibre_900Black,
   });
+
+  useEffect(()=>{
+    if(Platform.OS !='web'){
+    Appearance.setColorScheme(dark?"dark":"light")
+    }
+  },[dark])
   useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
@@ -55,7 +64,6 @@ if (!publishableKey) {
       <JsStack.Screen
                   name="login"
                   options={{
-
                     presentation: 'modal',
                     ...TransitionPresets.ModalPresentationIOS,
                     gestureEnabled: true,
@@ -78,6 +86,17 @@ if (!publishableKey) {
                       fontSize: 26,
                     },
                     title: '',
+                  }}
+                />
+                 <JsStack.Screen
+                  name="end"
+                  options={{
+
+                    presentation: 'transparentModal',
+                  title:"",
+                    headerShadowVisible:false,
+                    
+                    
                   }}
                 />           
     </JsStack>

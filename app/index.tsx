@@ -9,47 +9,50 @@ import  { BottomSheetModal } from "@gorhom/bottom-sheet";
 import SubscribeModal from "@/components/SubscribeModal";
 
 import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-expo";
+import Animated, { FadeIn, FadeInDown, FadeInRight } from "react-native-reanimated";
 
 export default function Index() {
   const colorScheme = useColorScheme();
   const subModalRef = useRef<BottomSheetModal>(null)
   const handlePresentModal = ()=>subModalRef.current?.present()
   const {signOut} = useAuth()
+
+  const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity)
   return (
     <View style={styles.container}>
       <SubscribeModal ref={subModalRef}/>
-      <View style={styles.header}>
+      <Animated.View style={styles.header} entering={FadeInDown}>
         <Icon width={100} height={100} />
         <ThemedText style={styles.title}>Wordle Clone</ThemedText>
         <Text style={styles.text}>Get a chance to guess a 5-letter word</Text>
-      </View>
+      </Animated.View>
       <View style={styles.menu}>
       <Link href={'/game'} style={[styles.btn,{backgroundColor: colorScheme =='light'?'#000':'#4a4a4a'}]} asChild>
-      <TouchableOpacity>
+      <AnimatedTouchableOpacity entering={FadeInRight}>
         <Text style={[styles.btnText,styles.primaryText]}>Play</Text>
-      </TouchableOpacity>
+      </AnimatedTouchableOpacity>
       </Link>
       <SignedOut>
       <Link href={'/login'} style={styles.btn} asChild>
-      <TouchableOpacity>
+      <AnimatedTouchableOpacity entering={FadeInRight.delay(100)} >
         <Text style={styles.btnText}>Login</Text>
-      </TouchableOpacity>
+      </AnimatedTouchableOpacity>
       </Link>
       </SignedOut>
       <SignedIn>
-      <TouchableOpacity style={styles.btn} onPress={()=>signOut()}>
+      <AnimatedTouchableOpacity style={styles.btn}  entering={FadeInRight.delay(100)} onPress={()=>signOut()}>
         <ThemedText style={styles.btnText}>Sign out</ThemedText>
-      </TouchableOpacity>
+      </AnimatedTouchableOpacity>
       </SignedIn>
-      <TouchableOpacity style={styles.btn} onPress={handlePresentModal}>
+      <AnimatedTouchableOpacity  entering={FadeInRight.delay(200)} style={styles.btn} onPress={handlePresentModal}>
         <ThemedText style={styles.btnText}>Subscribe</ThemedText>
-      </TouchableOpacity>
+      </AnimatedTouchableOpacity>
       </View>
-      <View style={styles.footer} >
+      <Animated.View  entering={FadeIn.delay(400)} style={styles.footer} >
       <ThemedText style={styles.footerDate}>{format(new Date(),'MMMM d, yyyy')}</ThemedText>
       <ThemedText style={styles.footerText}>No.1</ThemedText>
       <ThemedText style={styles.footerText}>Made by sabiq</ThemedText>
-      </View>
+      </Animated.View>
     </View>
   );
 }
