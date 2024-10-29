@@ -26,8 +26,8 @@ const Page = () => {
   const[grayLetters, setGrayLetters] = useState<string[]>([])
   const[yellowLetters, setYellowLetters] = useState<string[]>([])
   
-  //const [word, setWord] = useState(words[Math.floor(Math.random() * words.length)]);
-  const[word,setWord] = useState('sabiq') 
+  const [word, setWord] = useState(words[Math.floor(Math.random() * words.length)]);
+  //const[word,setWord] = useState('sabiq') 
   const wordLetters = word.split('');
   
   const colStateRef = useRef(curCol)
