@@ -23,10 +23,5 @@ A clone of the popular game Worldle, built using **React Native**. This app allo
 
 
 
-![](/image1.png)
-![](/image2.png)
-![](/image3.png)
-![](/image4.png)
-![](/image5.png)
-![](/image6.png)
-![](/image7.png)
+![](/image1.png) ![](/image2.png) ![](/image3.png)
+![](/image4.png) ![](/image5.png) ![](/image6.png) ![](/image7.png)
