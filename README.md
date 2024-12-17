@@ -1,7 +1,7 @@
 
-# Worldle Clone 🌍
+# Wordle Clone 🌍
 
-A clone of the popular game Worldle, built using **React Native**. This app allows users to guess words and provides additional features such as authentication with **Clerk**, a smooth and interactive user interface, and dark mode support.
+A clone of the popular game Wordle, built using **React Native**. This app allows users to guess words and provides additional features such as authentication with **Clerk**, a smooth and interactive user interface, and dark mode support.
 
 ## Features
 
