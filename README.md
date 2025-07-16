@@ -20,8 +20,21 @@ A clone of the popular game Wordle, built using **React Native**. This app allow
 - **Reanimated** - Smooth and flexible animations.
 - **MMKV** - Efficient storage library for local data management.
 - **Dark Mode Support** - Full support for light and dark modes to enhance the user experience.
+<p>
+  
+<img src="./image1.png" width="300" alt="Llama Sama">
+<img src="./image2.png" width="300" alt="Llama Sama">
+</p>
+<p>
+  
+<img src="./image3.png" width="300" alt="Llama Sama">
+<img src="./image4.png" width="300" alt="Llama Sama">
+</p>
+<p>
+  
+<img src="./image5.png" width="300" alt="Llama Sama">
+<img src="./image6.png" width="300" alt="Llama Sama">
+<img src="./image7.png" width="300" alt="Llama Sama">
 
+</p>
 
-
-![](/image1.png) ![](/image2.png) ![](/image3.png)
-![](/image4.png) ![](/image5.png) ![](/image6.png) ![](/image7.png)
